@@ -19,4 +19,15 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' , messages: messages});
 });
 
+router.post('/new', (req,res)=>{
+  //push messages from form input
+  messages.push({
+    text: req.body.message,
+    user: req.body.name,
+    added: new Date(),
+  })
+  //redirect users back to home
+  res.redirect('/');
+});
+
 module.exports = router;
